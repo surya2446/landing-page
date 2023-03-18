@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+h1 {
+  margin-bottom: 0.5em;
+  font-size: 3.6rem;
+}
+p {
+  margin-bottom: 0.5em;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+.button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 25px;
+  border-radius: 4px;
+}
+.button-primary {
+  position: relative;
+  background-color: #c0ca33;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  transition: color 0.3s ease-in;
+  z-index: 1;
+}
+.button-primary:hover {
+  color: #c0ca33;
+  text-decoration: none;
+}
+.button-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  -webkit-transform: scaleX(0.8);
+  -ms-transform: scaleX(0.8);
+  transform: scaleX(0.8);
+  transition: all 0.3s ease-in;
+  z-index: -1;
+}
+.button-primary:hover::after {
+  opacity: 1;
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+.overlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0,0);
+}
+
+.header-area {
+  position: relative;
+  height: 100vh;
+  background: #1b2a2f;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repear;
+  background-size: cover;
+}
+.banner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+.banner h1 {
+  font-weight: 800;
+}
+.banner p {
+  font-weight: 700;
+}
+.navbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  width: 100%;
+  transition: background 0.6s ease-in;
+  z-index: 99999;
+}
+.navbar .navbar-brand {
+padding-top: 3%;
+  font-family: 'Lobster', cursive;
+  font-size:35px;
+}
+.navbar .navbar-toggler {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.navbar .navbar-toggler .menu-icon-bar {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+  transition: all 0.3s ease-in;
+}
+.navbar .navbar-toggler .menu-icon-bar:first-child {
+  opacity: 1;
+  -webkit-transform: translateY(-1px) rotate(45deg);
+  -ms-sform: translateY(-1px) rotate(45deg);
+  transform: translateY(-1px) rotate(45deg);
+}
+.navbar .navbar-toggler .menu-icon-bar:last-child {
+  opacity: 1;
+  -webkit-transform: translateY(-1px) rotate(135deg);
+  -ms-sform: translateY(-1px) rotate(135deg);
+  transform: translateY(-1px) rotate(135deg);
+}
+.navbar .navbar-toggler.collapsed .menu-icon-bar {
+  opacity: 1;
+}
+.navbar .navbar-toggler.collapsed .menu-icon-bar:first-child {
+  -webkit-transform: translateY(-7px) rotate(0);
+  -ms-sform: translateY(-7px) rotate(0);
+  transform: translateY(-7px) rotate(0);
+}
+.navbar .navbar-toggler.collapsed .menu-icon-bar:last-child {
+  -webkit-transform: translateY(5px) rotate(0);
+  -ms-sform: translateY(5px) rotate(0);
+  transform: translateY(5px) rotate(0);
+}
+.navbar-dark .navbar-nav .nav-link {
+  position: relative;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+  color: #fff;
+}
+.navbar .dropdown-menu {
+  padding: 0;
+  background-color: rgba(0, 0, 0, .9);
+}
+.navbar .dropdown-menu .dropdown-item {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  transition: color 0.2s ease-in;
+}
+.navbar .dropdown-menu .dropdown-item:last-child {
+  border-bottom: none;
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: transparent;
+  color: #c0ca33;
+}
+.navbar .dropdown-menu .dropdown-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  width: 5px;
+  background-color: #c0ca33;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.navbar .dropdown-menu .dropdown-item:hover::before {
+  opacity: 1;
+}
+.navbar.fixed-top {
+  position: fixed;
+  -webkit-animation: navbar-animation 0.6s;
+  animation: navbar-animation 0.6s;
+  background-color: rgba(0, 0, 0, .9);
+}
+.navbar.fixed-top.navbar-dark .navbar-nav .nav-link.active {
+  color: #c0ca33;
+}
+.navbar.fixed-top.navbar-dark .navbar-nav .nav-link::after {
+  background-color: #c0ca33;
+}
+.content {
+  padding: 120px 0;
+}
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    margin-left: 20px;
+  }
+  .navbar-nav {
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, .9);
+  }
+  .navbar.fixed-top .navbar-nav {
+    background: transparent;
+  }
+}
+@media screen and (min-width: 767px) {
+  .banner {
+    padding: 0 150px;
+  }
+  .banner h1 {
+    font-size: 5rem;
+  }
+  .banner p {
+    font-size: 2rem;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    padding: 23px 15px;
+  }
+  .navbar-dark .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 30%;
+    right: 30%;
+    height: 1px;
+    background-color: #fff;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: transform 0.1s ease-in;
+  }
+  .navbar-dark .navbar-nav .nav-link:hover::after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  .dropdown-menu {
+    min-width: 200px;
+    -webkit-animation: dropdown-animation 0.3s;
+    animation: dropdown-animation 0.3s;
+    -webkit-transform-origin: top;
+    -ms-transform-origin: top;
+    transform-origin: top;
+  }
+}
+@-webkit-keyframes navbar-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes navbar-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes dropdown-animation {
+  0% {
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  75% {
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes dropdown-animation {
+  0% {
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  75% {
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+.side{
+    font-weight: bolder;
+    padding-top: 100px;
+    padding-left:6%;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 56px;
+
+}
+.box{
+    background-color: #1b2a2f;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    padding-top: 30px;
+    width:80%;
+    padding-left: 6%;
+
+
+}
+.box h1 {
+  font-size: 35px;
+}
+  .box--wide {
+    max-width: 50rem;
+  }
+  
+
+  /* The good stuff: */
+  
+  :root {
+    /* The intrinsic width of the underline stroke (in pixels). This is 
+     * the same as the height of the cap images. Don't specify the
+     * units! This is because of some of the calculations we do later on. */
+    --underline-intrinsic-width: 8;
+    
+    /* The actual width of the underline stroke we want to render (in pixels).
+     * You can modify this, and the sizing and positioning should be calculated
+     * accordingly. Again, Don't specify the units! */
+    --underline-width: 12;
+    
+    /* The colour used to draw the underline. It should match the colour
+     * used in the cap images... unfortunately we can't modify the SVG
+     * fill via CSS because it's a background image. */
+    --underline-color: #9c3a8a;
+    
+    /* We need to know the width of the cap images so that we
+     * can position everything on the x axis accordingly. */
+    --underline-cap-width: 4px;
+    
+    /* The border is positioned relative to the bottom of the line.
+     * We can move it upwards a little to create an overlap effect. */
+    --underline-offset-y: -2px;
+    
+    /* The padding to add to the x axis. By default, the caps would be
+     * aligned with the beginning and end of the line. */
+    --underline-padding-x: 0.12em;
+    
+    /* The cap images to use that form the left and right rounded
+     * shape. I guess these could be any shape, they don't
+     * necessarily have to be round 🙂.
+     */
+    --cap-image-left: url(https://files-d4s40otz1.now.sh/left.svg);
+    --cap-image-right: url(https://files-4vvqilj8v.now.sh/right.svg);
+  }
+    
+  .heading {
+    display: inline;
+    --underline-width-scale: calc(var(--underline-width) / var(--underline-intrinsic-width));
+    padding: 0 calc(var(--underline-padding-x) + calc(var(--underline-cap-width) * var(--underline-width-scale)));
+    box-decoration-break: clone;
+    background-repeat: no-repeat;
+    color: #fff;
+    background-image:
+      linear-gradient(180deg, var(--underline-color), var(--underline-color)),
+      var(--cap-image-left),
+      var(--cap-image-right);
+    background-position-x:
+      calc(var(--underline-cap-width) * var(--underline-width-scale)),
+      0,
+      100%;
+    background-position-y: calc(100% - var(--underline-offset-y) * -1);
+    background-size:
+      calc(100% - calc(var(--underline-cap-width) * var(--underline-width-scale) * 2)) calc(var(--underline-width) * 1px),
+      auto calc(var(--underline-width) * 1px),
+      auto calc(var(--underline-width) * 1px);
+  }
+  
+  .heading--2 {
+    --underline-width: 8;
+    --underline-offset-y: -2px;
+  }
+  
+  .heading--3 {
+    font-size: 3rem;
+    font-weight: bold;
+    --underline-width: 20;
+    --underline-offset-y: -2px;
+    --cap-image-left: url(https://files-6lc03kjqt.now.sh/left-2.svg);
+    --cap-image-right: url(https://files-e7gkh52mq.now.sh/right-2.svg);
+  }
+  .sec-1{
+    display: flex;
+  }
+  .img-1{
+    border-radius: 12%;
+  }
+ .img-div{
+    padding:0px 20px;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+ }
+ .tit{
+    padding-left: 3%;   
+    font-size: 50px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    font-family: 'Times New Roman', Times, serif;
+ }
+ .con-1{
+    
+    font-size: 30px;
+    padding-left: 3%;
+ }
+ .mn-1{
+    background-color:#FFFFFF;
+ }
+ .con-2{
+    
+    font-size: 30px;
+    padding-left: 3%;
+ }
+ .mn-2{
+    padding-top: 3%;
+    background-color: #1b2a2f;
+    color: #fff;
+ }
+
+
+
+
+ .service-item {
+  position: relative;
+  height: 300px;
+  padding: 0 30px;
+  transition: .5s;
+}
+
+.service-item .service-icon {
+  margin-bottom: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: rotate(-45deg);
+}
+
+.service-item .service-icon i {
+  transform: rotate(45deg);
+}
+
+.service-item a.btn {
+  position: absolute;
+  width: 60px;
+  bottom: -48px;
+  left: 50%;
+  margin-left: -30px;
+  opacity: 0;
+}
+
+.service-item:hover a.btn {
+  bottom: -24px;
+  opacity: 1;
+}
+.con-3{
+  background-color: #fff;
+  color: #1b2a2f;
+}
+.tit3{
+padding-bottom: 3%;}
+
+
+.gradient-custom {
+  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+.carousel-indicators {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+@media only screen and (min-width: 800px) {
+  blockquote p{
+    font-size:20px !important;
+
+  }
+  blockquote {
+      
+       min-height: 300px;
+       display: flex;
+       justify-content: center;
+       align-items: start;
+       flex-direction: column;
+  }
+  
+}
+
+.brand{
+  margin-bottom:20px !important;
+}
+ul{
+list-style-type:disc !important;
+}
